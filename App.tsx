@@ -25,6 +25,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Config from 'react-native-config';
+import {Configuration, OpenAIApi} from 'openai';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -57,6 +60,37 @@ function Section({children, title}: SectionProps): JSX.Element {
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const configuration = new Configuration({
+        apiKey: Config.OPENAI_API_KEY,
+      });
+      const openai = new OpenAIApi(configuration);
+
+      try {
+        const response = await openai.createImage({
+          prompt: 'a white siamese cat',
+          n: 5,
+          size: '1024x1024',
+        });
+
+        const imageUrl = response.data.data[0].url;
+        console.log(imageUrl);
+        console.log(response.data);
+        debugger;
+      } catch (error) {
+        debugger;
+        if (error instanceof Error) {
+          console.log(error);
+          console.log(error.message);
+          debugger;
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
