@@ -1,34 +1,47 @@
 import * as React from 'react';
-import {StyleSheet, ScrollView, Text, View} from 'react-native';
+import {StyleSheet, Text, FlatList, View} from 'react-native';
 
 import {IntroScreenProps} from '../../routes/types';
 import SlideItem from './components/SlideItem';
 import DotItem from './components/DotItem';
-import {TIntro, TStyles} from './types';
+import {SlideItemProps, TIntro, TStyles} from './types';
 
-const data: TIntro[] = [
-  {text: 'Slide 1'},
-  {text: 'Slide 2'},
-  {text: 'Slide 3'},
-  {text: 'Slide 4'},
-  {text: 'Slide 5'},
+const DATA: TIntro[] = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    text: 'Slide 1',
+  },
+  {
+    id: 'bd7acbea-c1b1-kjad79-aed5-3ad53abb28ba',
+    text: 'Slide 2',
+  },
+  {
+    id: 'dnl89-c1b1-46c2-aed5-3ad53abb28ba',
+    text: 'Slide 3',
+  },
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-dnl6AD',
+    text: 'Slide 4',
+  },
+  {
+    id: 'nklNK76-c1b1-39jd-aed5-ADHF',
+    text: 'Slide 5',
+  },
 ];
 
 function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
-  function renderSlideItems(): JSX.Element[] {
-    return data.map((element, index) => (
-      <SlideItem
-        key={`slideItem_${index}`}
-        slideStyles={styles[`slide${index}`]}>
-        <Text style={styles.text}>{element.text}</Text>
+  function renderSlideItem({item, index}: SlideItemProps): JSX.Element {
+    return (
+      <SlideItem slideStyles={styles[`slide${index}`]}>
+        <Text style={styles.text}>{item.text}</Text>
       </SlideItem>
-    ));
+    );
   }
 
   function renderPagination(): JSX.Element {
     return (
       <View style={styles.pagination}>
-        {data.map((element, index) => (
+        {DATA.map((element, index) => (
           <DotItem key={`Pagination_${index}`} index={index} />
         ))}
       </View>
@@ -37,13 +50,15 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
 
   return (
     <>
-      <ScrollView
+      <FlatList
+        data={DATA}
         style={styles.container}
         showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={renderSlideItem}
         horizontal
-        pagingEnabled>
-        {renderSlideItems()}
-      </ScrollView>
+        pagingEnabled
+      />
       {renderPagination()}
     </>
   );
