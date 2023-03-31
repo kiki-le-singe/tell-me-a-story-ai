@@ -3,6 +3,7 @@ import {StyleSheet, ScrollView, Text, View} from 'react-native';
 
 import {IntroScreenProps} from '../../routes/types';
 import SlideItem from './components/SlideItem';
+import DotItem from './components/DotItem';
 import {TIntro, TStyles} from './types';
 
 const data: TIntro[] = [
@@ -24,6 +25,16 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
     ));
   }
 
+  function renderPagination(): JSX.Element {
+    return (
+      <View style={styles.pagination}>
+        {data.map((element, index) => (
+          <DotItem key={`Pagination_${index}`} index={index} />
+        ))}
+      </View>
+    );
+  }
+
   return (
     <>
       <ScrollView
@@ -33,6 +44,7 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
         pagingEnabled>
         {renderSlideItems()}
       </ScrollView>
+      {renderPagination()}
     </>
   );
 }
@@ -69,6 +81,14 @@ const styles: TStyles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 28,
+  },
+  pagination: {
+    flexDirection: 'row',
+    gap: 10,
+    position: 'absolute',
+    bottom: '5%',
+    justifyContent: 'center',
+    width: '100%',
   },
 });
 
