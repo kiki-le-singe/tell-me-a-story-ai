@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, Text, FlatList} from 'react-native';
+import {StyleSheet, Text, FlatList, Animated} from 'react-native';
 
 import {IntroScreenProps} from '../../routes/types';
 import SlideItem from './components/SlideItem';
@@ -36,6 +36,7 @@ const DATA: TIntro[] = [
 
 function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const scrollXValue = React.useRef(new Animated.Value(0)).current;
 
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 50,
@@ -50,6 +51,13 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
   const viewabilityConfigCallbackPairs = React.useRef([
     {viewabilityConfig, onViewableItemsChanged},
   ]);
+
+  const onScroll = Animated.event(
+    [{nativeEvent: {contentOffset: {x: scrollXValue}}}],
+    {
+      useNativeDriver: false,
+    },
+  );
 
   function renderSlideItem({item, index}: SlideItemProps): JSX.Element {
     return (
@@ -68,10 +76,15 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
         keyExtractor={item => item.id}
         renderItem={renderSlideItem}
         viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
+        onScroll={onScroll}
         horizontal
         pagingEnabled
       />
-      <Pagination data={DATA} selectedIndex={selectedIndex} />
+      <Pagination
+        data={DATA}
+        selectedIndex={selectedIndex}
+        scrollXValue={scrollXValue}
+      />
     </>
   );
 }

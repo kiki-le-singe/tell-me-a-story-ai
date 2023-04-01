@@ -4,12 +4,23 @@ import {StyleSheet, View} from 'react-native';
 import {TPaginationProps} from './types';
 import DotItem from '../DotItem';
 
-function Pagination({data, selectedIndex}: TPaginationProps): JSX.Element {
+function Pagination({
+  data,
+  selectedIndex,
+  scrollXValue,
+}: TPaginationProps): JSX.Element {
   return (
     <View style={styles.container}>
       {data.map((element, index) => {
         const isSelected = selectedIndex === index;
-        return <DotItem key={`Pagination_${index}`} isSelected={isSelected} />;
+        return (
+          <DotItem
+            key={`Pagination_${index}`}
+            index={index}
+            isSelected={isSelected}
+            scrollXValue={scrollXValue}
+          />
+        );
       })}
     </View>
   );

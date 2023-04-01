@@ -1,17 +1,29 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {Animated, StyleSheet, useWindowDimensions} from 'react-native';
 import {DotProps} from './types';
 
-function DotItem({isSelected}: DotProps): JSX.Element {
+function DotItem({isSelected, index, scrollXValue}: DotProps): JSX.Element {
+  const {width} = useWindowDimensions();
   const backgroundColorStyles = isSelected ? styles.selected : {};
 
-  return <View style={[styles.container, backgroundColorStyles]} />;
+  const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
+
+  const animatedWidth = scrollXValue.interpolate({
+    inputRange,
+    outputRange: [8, 24, 8],
+    extrapolate: 'clamp',
+  });
+
+  return (
+    <Animated.View
+      style={[styles.container, backgroundColorStyles, {width: animatedWidth}]}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: 10,
-    height: 10,
+    height: 8,
     borderRadius: 10,
     backgroundColor: 'rgba(255,255,255, 0.6)',
   },
