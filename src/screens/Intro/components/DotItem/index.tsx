@@ -2,8 +2,10 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {DotProps} from './types';
 
-function DotItem({index}: DotProps): JSX.Element {
-  return <View style={styles.container} />;
+function DotItem({isSelected}: DotProps): JSX.Element {
+  const backgroundColorStyles = isSelected ? styles.selected : {};
+
+  return <View style={[styles.container, backgroundColorStyles]} />;
 }
 
 const styles = StyleSheet.create({
@@ -11,6 +13,9 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255, 0.6)',
+  },
+  selected: {
     backgroundColor: 'white',
   },
 });

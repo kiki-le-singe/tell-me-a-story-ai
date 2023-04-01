@@ -1,3 +1,9 @@
+import {ViewToken} from 'react-native/types';
+
+export type OnViewableItemsChangedProps = {
+  viewableItems: ViewToken[];
+};
+
 export type TIntro = {
   id: string;
   text: string;

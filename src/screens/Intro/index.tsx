@@ -1,10 +1,15 @@
 import * as React from 'react';
-import {StyleSheet, Text, FlatList, View} from 'react-native';
+import {StyleSheet, Text, FlatList} from 'react-native';
 
 import {IntroScreenProps} from '../../routes/types';
 import SlideItem from './components/SlideItem';
-import DotItem from './components/DotItem';
-import {SlideItemProps, TIntro, TStyles} from './types';
+import {
+  SlideItemProps,
+  TIntro,
+  TStyles,
+  OnViewableItemsChangedProps,
+} from './types';
+import Pagination from './components/Pagination';
 
 const DATA: TIntro[] = [
   {
@@ -30,21 +35,27 @@ const DATA: TIntro[] = [
 ];
 
 function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const viewabilityConfig = {
+    itemVisiblePercentThreshold: 50,
+  };
+  const onViewableItemsChanged = ({
+    viewableItems,
+  }: OnViewableItemsChangedProps) => {
+    const index = viewableItems[0].index ?? 0;
+    console.log('index', index);
+    setSelectedIndex(index);
+  };
+  const viewabilityConfigCallbackPairs = React.useRef([
+    {viewabilityConfig, onViewableItemsChanged},
+  ]);
+
   function renderSlideItem({item, index}: SlideItemProps): JSX.Element {
     return (
       <SlideItem slideStyles={styles[`slide${index}`]}>
         <Text style={styles.text}>{item.text}</Text>
       </SlideItem>
-    );
-  }
-
-  function renderPagination(): JSX.Element {
-    return (
-      <View style={styles.pagination}>
-        {DATA.map((element, index) => (
-          <DotItem key={`Pagination_${index}`} index={index} />
-        ))}
-      </View>
     );
   }
 
@@ -56,10 +67,11 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}
         renderItem={renderSlideItem}
+        viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
         horizontal
         pagingEnabled
       />
-      {renderPagination()}
+      <Pagination data={DATA} selectedIndex={selectedIndex} />
     </>
   );
 }
