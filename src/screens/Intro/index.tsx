@@ -10,6 +10,7 @@ import {
   OnViewableItemsChangedProps,
 } from './types';
 import Pagination from './components/Pagination';
+import colors from '../../utils/colors';
 
 const DATA: TIntro[] = [
   {
@@ -37,6 +38,8 @@ const DATA: TIntro[] = [
 function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const scrollXValue = React.useRef(new Animated.Value(0)).current;
+  const dataLength = DATA.length;
+  const lastIndex = dataLength - 1;
 
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 50,
@@ -60,8 +63,10 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
   );
 
   function renderSlideItem({item, index}: SlideItemProps): JSX.Element {
+    const isLastItem = index === lastIndex;
+
     return (
-      <SlideItem slideStyles={styles[`slide${index}`]}>
+      <SlideItem slideStyles={styles[`slide${index}`]} isLastItem={isLastItem}>
         <Text style={styles.text}>{item.text}</Text>
       </SlideItem>
     );
@@ -92,34 +97,25 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
 const styles: TStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181C25',
-    // backgroundColor: '#F7AB8D',
-    // backgroundColor: '#0596A3',
-    // backgroundColor: '#F35E5F',
-    // backgroundColor: '#FEEBE4',
-    // backgroundColor: '#2C4A58',
-    // backgroundColor: '#C6E9FB',
-    // backgroundColor: '#FCCF69',
-    // backgroundColor: '#D088E4',
-    // backgroundColor: '#F57F3D',
+    backgroundColor: colors.BLACK,
   },
   slide0: {
-    backgroundColor: '#80C690',
+    backgroundColor: colors.GREEN,
   },
   slide1: {
-    backgroundColor: '#F35E5F',
+    backgroundColor: colors.RED,
   },
   slide2: {
-    backgroundColor: '#0596A3',
+    backgroundColor: colors.BLUE_GREEN,
   },
   slide3: {
-    backgroundColor: '#FCCF69',
+    backgroundColor: colors.YELLOW,
   },
   slide4: {
-    backgroundColor: '#D088E4',
+    backgroundColor: colors.PURPLE,
   },
   text: {
-    color: 'white',
+    color: colors.WHITE,
     fontSize: 28,
   },
   pagination: {
