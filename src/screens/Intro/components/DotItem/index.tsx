@@ -10,7 +10,7 @@ function DotItem({isSelected, index, scrollXValue}: DotProps): JSX.Element {
 
   const animatedWidth = scrollXValue.interpolate({
     inputRange,
-    outputRange: [8, 24, 8],
+    outputRange: [5, 24, 5],
     extrapolate: 'clamp',
   });
 
@@ -23,7 +23,7 @@ function DotItem({isSelected, index, scrollXValue}: DotProps): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    height: 8,
+    height: 5,
     borderRadius: 10,
     backgroundColor: 'rgba(255,255,255, 0.6)',
   },
