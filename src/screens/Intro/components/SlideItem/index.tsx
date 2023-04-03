@@ -11,9 +11,11 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import {SlideProps} from './types';
 import colors from '../../../../utils/colors';
+import {RootStackParamList} from '../../../../routes/types';
 
 function SlideItem({
   children,
@@ -21,6 +23,7 @@ function SlideItem({
   isLastItem = false,
   isLastItemSelected = false,
 }: SlideProps): JSX.Element {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const {width} = useWindowDimensions();
 
   const opacity = useSharedValue(0);
@@ -37,6 +40,10 @@ function SlideItem({
     };
   });
 
+  const handlePress = () => {
+    navigation.navigate('Home');
+  };
+
   // Start animation when the component is mounted
   React.useEffect(() => {
     if (isLastItemSelected) {
@@ -51,7 +58,9 @@ function SlideItem({
       {children}
 
       {isLastItem && (
-        <TouchableOpacity style={styles.skipButtonContainer}>
+        <TouchableOpacity
+          onPress={handlePress}
+          style={styles.skipButtonContainer}>
           <Animated.View style={[styles.skipButtonContent, buttonStyle]}>
             <Text style={styles.skipText}>Skip</Text>
           </Animated.View>

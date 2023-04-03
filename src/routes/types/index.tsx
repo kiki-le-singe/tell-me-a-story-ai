@@ -1,10 +1,10 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  Intro: undefined;
-  Home: undefined;
-  Products: undefined;
-  Details: undefined;
+  Intro: object | undefined;
+  Home: object | undefined;
+  Products: object | undefined;
+  Details: object | undefined;
 };
 
 export type IntroScreenProps = NativeStackScreenProps<
