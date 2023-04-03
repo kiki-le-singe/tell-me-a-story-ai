@@ -7,6 +7,7 @@ export default {
   BLUE_GREEN: '#0596A3',
   YELLOW: '#FCCF69',
   PURPLE: '#D088E4',
+  ORANGE: '#F57F3D',
   //   '#F7AB8D',
   //   '#FEEBE4',
   //   '#2C4A58',

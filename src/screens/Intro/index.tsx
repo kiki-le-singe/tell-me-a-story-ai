@@ -40,6 +40,7 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
   const scrollXValue = React.useRef(new Animated.Value(0)).current;
   const dataLength = DATA.length;
   const lastIndex = dataLength - 1;
+  const isLastItemSelected = lastIndex === selectedIndex;
 
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 50,
@@ -66,7 +67,10 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
     const isLastItem = index === lastIndex;
 
     return (
-      <SlideItem slideStyles={styles[`slide${index}`]} isLastItem={isLastItem}>
+      <SlideItem
+        slideStyles={styles[`slide${index}`]}
+        isLastItemSelected={isLastItemSelected}
+        isLastItem={isLastItem}>
         <Text style={styles.text}>{item.text}</Text>
       </SlideItem>
     );
