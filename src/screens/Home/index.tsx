@@ -10,8 +10,8 @@ import thinkingImage from '../../assets/images/thinking.jpg';
 import helpImage from '../../assets/images/help.jpg';
 import pickImage from '../../assets/images/pick.jpg';
 import readImage from '../../assets/images/read.jpg';
-import Explanation from './Explanation';
-import {Position} from './Explanation/types';
+import Explanation from './components/Explanation';
+import {Position} from './components/Explanation/types';
 
 function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
   // React.useEffect(() => {

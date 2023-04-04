@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    borderWidth: 1,
+    width: 70,
+    height: 70,
+    borderRadius: 70,
+    borderWidth: 2,
   },
 });
 
