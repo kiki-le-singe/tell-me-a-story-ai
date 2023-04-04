@@ -12,6 +12,88 @@ import pickImage from '../../assets/images/pick.jpg';
 import readImage from '../../assets/images/read.jpg';
 import Explanation from './components/Explanation';
 import {Position} from './components/Explanation/types';
+import Choices from './components/Choices';
+
+const DATAHeroes = [
+  {
+    label: 'Vampire',
+    image: require('../../assets/images/vampire.jpg'),
+  },
+  {
+    label: 'Giraffe',
+    image: require('../../assets/images/giraffe.jpg'),
+  },
+  {
+    label: 'Dog',
+    image: require('../../assets/images/dog.jpg'),
+  },
+  {
+    label: 'Alien',
+    image: require('../../assets/images/alien.jpg'),
+  },
+  {
+    label: 'Cat',
+    image: require('../../assets/images/cat.jpg'),
+  },
+  {
+    label: 'Dragon',
+    image: require('../../assets/images/dragon.jpg'),
+  },
+  {
+    label: 'Pig',
+    image: require('../../assets/images/pig.jpg'),
+  },
+];
+
+const DATAVillains = [
+  {
+    label: 'Zombies',
+    image: require('../../assets/images/zombies.jpg'),
+  },
+  {
+    label: 'Wolf',
+    image: require('../../assets/images/wolf.jpg'),
+  },
+  {
+    label: 'Alien',
+    image: require('../../assets/images/alien.jpg'),
+  },
+  {
+    label: 'Vampire',
+    image: require('../../assets/images/vampire.jpg'),
+  },
+  {
+    label: 'Dragon',
+    image: require('../../assets/images/dragon.jpg'),
+  },
+];
+
+const DATAPlaces = [
+  {
+    label: 'Beach',
+    image: require('../../assets/images/beach.jpg'),
+  },
+  {
+    label: 'Mountain',
+    image: require('../../assets/images/mountain.jpg'),
+  },
+  {
+    label: 'Forest',
+    image: require('../../assets/images/forest.jpg'),
+  },
+  {
+    label: 'Galaxy',
+    image: require('../../assets/images/galaxy.jpg'),
+  },
+  {
+    label: 'Desert',
+    image: require('../../assets/images/desert.jpg'),
+  },
+  {
+    label: 'Planet',
+    image: require('../../assets/images/planet.jpg'),
+  },
+];
 
 function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
   // React.useEffect(() => {
@@ -78,6 +160,14 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
         imageStyles={styles.readImage}
       />
 
+      <Choices
+        data={DATAHeroes}
+        text="Choose a hero"
+        containerStyles={styles.choices}
+      />
+      <Choices data={DATAVillains} text="Choose a villain" />
+      <Choices data={DATAPlaces} text="Choose a place" />
+
       <Button
         title="Go to List of products"
         onPress={() => navigation.navigate('Products')}
@@ -107,6 +197,9 @@ const styles = StyleSheet.create({
   },
   readImage: {
     borderColor: colors.BLUE_GREEN,
+  },
+  choices: {
+    marginTop: 80,
   },
 });
 
