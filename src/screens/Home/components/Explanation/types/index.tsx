@@ -9,6 +9,6 @@ export type ExplanationProps = {
   image: ImageSourcePropType;
   text: string;
   textPosition?: Position;
-  imageStyles: object;
-  textStyles: object;
+  imageStyles?: object;
+  textStyles?: object;
 };
