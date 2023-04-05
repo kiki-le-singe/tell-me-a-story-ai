@@ -15,5 +15,6 @@ They are designed by these authors:
 - [rawpixel-com](https://www.freepik.com/author/rawpixel-com)
 - [upklyak](https://www.freepik.com/author/upklyak)
 - [brgfx](https://www.freepik.com/author/brgfx)
+- [storyset](https://www.freepik.com/author/stories)
 
 A big thanks to them for their awesome work!
