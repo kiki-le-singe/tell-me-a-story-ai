@@ -62,7 +62,7 @@ function SlideItem({
           onPress={handlePress}
           style={styles.skipButtonContainer}>
           <Animated.View style={[styles.skipButtonContent, buttonStyle]}>
-            <Text style={styles.skipText}>Skip</Text>
+            <Text style={styles.skipText}>Let's Go!</Text>
           </Animated.View>
         </TouchableOpacity>
       )}
@@ -75,17 +75,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    color: colors.WHITE,
+    backgroundColor: colors.WHITE,
+    gap: 10,
   },
   skipButtonContainer: {
     position: 'absolute',
-    bottom: '10%',
+    bottom: '12%',
   },
   skipButtonContent: {
     backgroundColor: colors.ORANGE,
-    padding: 6,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     borderWidth: 1,
     borderColor: colors.WHITE,

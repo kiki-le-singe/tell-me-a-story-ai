@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
   container: {
     height: 5,
     borderRadius: 10,
-    backgroundColor: colors.WHITE_II,
+    backgroundColor: colors.BLUE_DARK,
   },
   selected: {
-    backgroundColor: colors.WHITE,
+    backgroundColor: colors.BLACK,
   },
 });
 

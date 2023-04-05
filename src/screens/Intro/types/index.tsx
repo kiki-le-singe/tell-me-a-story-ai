@@ -1,4 +1,4 @@
-import {ViewToken} from 'react-native/types';
+import {ImageSourcePropType, ViewToken} from 'react-native/types';
 
 export type OnViewableItemsChangedProps = {
   viewableItems: ViewToken[];
@@ -7,6 +7,7 @@ export type OnViewableItemsChangedProps = {
 export type TIntro = {
   id: string;
   text: string;
+  image: ImageSourcePropType;
 };
 
 export type TStyles = {

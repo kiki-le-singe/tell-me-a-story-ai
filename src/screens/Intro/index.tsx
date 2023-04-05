@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, Text, FlatList, Animated} from 'react-native';
+import {StyleSheet, Text, FlatList, Animated, Image} from 'react-native';
 
 import {IntroScreenProps} from '../../routes/types';
 import SlideItem from './components/SlideItem';
@@ -15,23 +15,28 @@ import colors from '../../utils/colors';
 const DATA: TIntro[] = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    text: 'Slide 1',
+    text: "Don't you have any inspiration?",
+    image: require('../../assets/images/thinking.jpg'),
   },
   {
     id: 'bd7acbea-c1b1-kjad79-aed5-3ad53abb28ba',
-    text: 'Slide 2',
+    text: "It's ok, let's help you!",
+    image: require('../../assets/images/help.jpg'),
   },
   {
     id: 'dnl89-c1b1-46c2-aed5-3ad53abb28ba',
-    text: 'Slide 3',
+    text: 'Just choose what you want...',
+    image: require('../../assets/images/pick.jpg'),
   },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-dnl6AD',
-    text: 'Slide 4',
+    text: 'And just read your story!',
+    image: require('../../assets/images/read.jpg'),
   },
   {
-    id: 'nklNK76-c1b1-39jd-aed5-ADHF',
-    text: 'Slide 5',
+    id: 'bd8acbWa-c23b1-46V2-aF55-dnl6AD',
+    text: 'You can also write your own story!',
+    image: require('../../assets/images/writting.jpg'),
   },
 ];
 
@@ -68,9 +73,9 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
 
     return (
       <SlideItem
-        slideStyles={styles[`slide${index}`]}
         isLastItemSelected={isLastItemSelected}
         isLastItem={isLastItem}>
+        <Image style={styles.image} source={item.image} />
         <Text style={styles.text}>{item.text}</Text>
       </SlideItem>
     );
@@ -103,24 +108,10 @@ const styles: TStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.BLACK,
   },
-  slide0: {
-    backgroundColor: colors.GREEN,
-  },
-  slide1: {
-    backgroundColor: colors.RED,
-  },
-  slide2: {
-    backgroundColor: colors.BLUE_GREEN,
-  },
-  slide3: {
-    backgroundColor: colors.YELLOW,
-  },
-  slide4: {
-    backgroundColor: colors.PURPLE,
-  },
+  image: {width: 300, height: 300},
   text: {
-    color: colors.WHITE,
-    fontSize: 28,
+    color: colors.BLUE_DARK,
+    fontSize: 22,
   },
   pagination: {
     flexDirection: 'row',
