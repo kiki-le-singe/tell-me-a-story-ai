@@ -30,7 +30,7 @@ const DATA: TIntro[] = [
   },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-dnl6AD',
-    text: 'And just read your story!',
+    text: 'And just read the story!',
     image: require('../../assets/images/read.jpg'),
   },
   {
