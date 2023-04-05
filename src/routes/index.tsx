@@ -14,7 +14,8 @@ function Routes(): JSX.Element {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: colors.WHITE,
+        headerTintColor: colors.ORANGE,
+        headerTitleStyle: {color: colors.WHITE},
         headerStyle: {
           backgroundColor: colors.BLUE_DARK,
         },
