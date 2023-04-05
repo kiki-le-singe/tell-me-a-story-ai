@@ -38,6 +38,11 @@ const DATA: TIntro[] = [
     text: 'You can also write your own story!',
     image: require('../../assets/images/writting.jpg'),
   },
+  {
+    id: 'Zd8acbWa-6Hu9b1-32cdfE6V2-aF55-dXl6AD',
+    text: 'And just read your story!',
+    image: require('../../assets/images/relax-and-read.jpg'),
+  },
 ];
 
 function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
