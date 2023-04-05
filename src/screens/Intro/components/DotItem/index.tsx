@@ -3,11 +3,16 @@ import {Animated, StyleSheet, useWindowDimensions} from 'react-native';
 import {DotProps} from './types';
 import colors from '../../../../utils/colors';
 
-function DotItem({isSelected, index, scrollXValue}: DotProps): JSX.Element {
+function DotItem({index, scrollXValue}: DotProps): JSX.Element {
   const {width} = useWindowDimensions();
-  const backgroundColorStyles = isSelected ? styles.selected : {};
 
   const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
+
+  const animatedBackgroundColor = scrollXValue.interpolate({
+    inputRange,
+    outputRange: [colors.ORANGE, colors.ORANGE_DARK, colors.ORANGE],
+    extrapolate: 'clamp',
+  });
 
   const animatedWidth = scrollXValue.interpolate({
     inputRange,
@@ -17,7 +22,10 @@ function DotItem({isSelected, index, scrollXValue}: DotProps): JSX.Element {
 
   return (
     <Animated.View
-      style={[styles.container, backgroundColorStyles, {width: animatedWidth}]}
+      style={[
+        styles.container,
+        {width: animatedWidth, backgroundColor: animatedBackgroundColor},
+      ]}
     />
   );
 }
@@ -26,10 +34,6 @@ const styles = StyleSheet.create({
   container: {
     height: 5,
     borderRadius: 10,
-    backgroundColor: colors.BLUE_DARK,
-  },
-  selected: {
-    backgroundColor: colors.BLACK,
   },
 });
 
