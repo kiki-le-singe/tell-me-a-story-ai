@@ -179,12 +179,13 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.BLACK,
+    backgroundColor: colors.BLUE_DARK,
   },
   contentContainerStyle: {
-    paddingVertical: 40,
+    paddingTop: 20,
+    paddingBottom: 40,
     alignItems: 'center',
-    gap: -10,
+    gap: -12,
   },
   inspirationImage: {
     borderColor: colors.PURPLE,

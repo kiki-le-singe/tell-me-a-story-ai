@@ -58,6 +58,8 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 80,
+    borderWidth: 1,
+    borderColor: colors.BLUE_GREEN,
   },
   label: {
     color: colors.WHITE,
