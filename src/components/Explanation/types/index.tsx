@@ -11,4 +11,5 @@ export type ExplanationProps = {
   textPosition?: Position;
   imageStyles?: object;
   textStyles?: object;
+  containerStyles?: object;
 };

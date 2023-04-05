@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView, Text, TouchableOpacity} from 'react-native';
 // import Config from 'react-native-config';
 // import {Configuration, OpenAIApi} from 'openai';
 
@@ -10,9 +10,9 @@ import thinkingImage from '../../assets/images/thinking.jpg';
 import helpImage from '../../assets/images/help.jpg';
 import pickImage from '../../assets/images/pick.jpg';
 import readImage from '../../assets/images/read.jpg';
-import Explanation from './components/Explanation';
-import {Position} from './components/Explanation/types';
-import Choices from './components/Choices';
+import Explanation from '../../components/Explanation';
+import {Position} from '../../components/Explanation/types';
+import Choices from '../../components/Choices';
 
 const DATAHeroes = [
   {
@@ -128,6 +128,10 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
   //   // fetchData();
   // }, []);
 
+  function handlePress() {
+    navigation.navigate('WriteStory');
+  }
+
   return (
     <ScrollView
       style={styles.container}
@@ -145,7 +149,7 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
       <Explanation text="Just choose what you want..." image={pickImage} />
       <Explanation
         textPosition={Position.Right}
-        text="And just read your story!"
+        text="And just read the story!"
         image={readImage}
       />
 
@@ -157,10 +161,9 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
       <Choices data={DATAVillains} text="Choose a villain" />
       <Choices data={DATAPlaces} text="Choose a place" />
 
-      <Button
-        title="Go to List of products"
-        onPress={() => navigation.navigate('Products')}
-      />
+      <TouchableOpacity onPress={handlePress} style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Write your own story</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -172,12 +175,22 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     paddingTop: 20,
-    paddingBottom: 40,
+    paddingBottom: 80,
     alignItems: 'center',
     gap: -12,
   },
   choices: {
-    marginTop: 80,
+    marginTop: 50,
+  },
+  buttonContainer: {
+    marginTop: 50,
+    backgroundColor: colors.ORANGE,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: colors.WHITE,
+    fontSize: 20,
   },
 });
 

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {ChoicesProps} from './types';
-import colors from '../../../../utils/colors';
+import colors from '../../utils/colors';
 
 function Choices({data, text, containerStyles}: ChoicesProps): JSX.Element {
   return (
@@ -33,7 +33,7 @@ function Choices({data, text, containerStyles}: ChoicesProps): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: 30,
+    marginVertical: 25,
   },
   text: {
     paddingLeft: 20,

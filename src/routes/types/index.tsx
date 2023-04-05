@@ -3,7 +3,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 export type RootStackParamList = {
   Intro: object | undefined;
   Home: object | undefined;
-  Products: object | undefined;
+  WriteStory: object | undefined;
   Details: object | undefined;
 };
 
@@ -17,9 +17,9 @@ export type HomeScreenProps = NativeStackScreenProps<
   'Home'
 >;
 
-export type ProductsScreenProps = NativeStackScreenProps<
+export type WriteStoryScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  'Products'
+  'WriteStory'
 >;
 
 export type DetailsScreenProps = NativeStackScreenProps<
