@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
 import {ExplanationProps, Position} from './types';
+import colors from '../../../../utils/colors';
 
 function Explanation({
   image,
@@ -30,14 +31,16 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   text: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: '500',
+    color: colors.BLUE_DARK,
   },
   image: {
     width: 65,
     height: 65,
     borderRadius: 65,
-    borderWidth: 1,
+    borderWidth: 0.2,
+    borderColor: colors.BLUE_DARK,
   },
 });
 

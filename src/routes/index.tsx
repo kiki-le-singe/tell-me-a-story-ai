@@ -27,7 +27,7 @@ function Routes(): JSX.Element {
           headerTintColor: colors.WHITE,
           headerBackVisible: false,
           headerStyle: {
-            backgroundColor: colors.BLUE_GREEN,
+            backgroundColor: colors.BLUE_DARK,
           },
         }}
         component={HomeScreen}

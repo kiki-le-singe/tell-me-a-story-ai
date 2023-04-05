@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   text: {
-    alignSelf: 'center',
+    paddingLeft: 20,
+    paddingBottom: 6,
     marginBottom: 10,
-    color: colors.YELLOW,
-    fontSize: 18,
-    fontWeight: '500',
+    color: colors.ORANGE,
+    fontSize: 20,
+    fontWeight: '600',
   },
   contentContainerStyle: {
     gap: 10,
@@ -58,12 +59,11 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 80,
-    borderWidth: 1,
-    borderColor: colors.BLUE_GREEN,
+    borderWidth: 0.2,
+    borderColor: colors.BLUE_DARK,
   },
   label: {
-    color: colors.WHITE,
-    fontWeight: '500',
+    color: colors.BLUE_DARK,
   },
 });
 

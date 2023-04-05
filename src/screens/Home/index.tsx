@@ -135,29 +135,18 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
       showsVerticalScrollIndicator={false}>
       <Explanation
         text="Don't you have any inspiration?"
-        textStyles={{color: colors.PURPLE}}
         image={thinkingImage}
-        imageStyles={styles.inspirationImage}
       />
       <Explanation
         textPosition={Position.Right}
         text="It's ok, let's help you!"
-        textStyles={{color: colors.GREEN}}
         image={helpImage}
-        imageStyles={styles.helpImage}
       />
-      <Explanation
-        text="Just choose what you want..."
-        textStyles={{color: colors.ORANGE}}
-        image={pickImage}
-        imageStyles={styles.pickImage}
-      />
+      <Explanation text="Just choose what you want..." image={pickImage} />
       <Explanation
         textPosition={Position.Right}
         text="And just read your story!"
-        textStyles={{color: colors.BLUE_GREEN}}
         image={readImage}
-        imageStyles={styles.readImage}
       />
 
       <Choices
@@ -179,25 +168,13 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.BLUE_DARK,
+    backgroundColor: colors.WHITE,
   },
   contentContainerStyle: {
     paddingTop: 20,
     paddingBottom: 40,
     alignItems: 'center',
     gap: -12,
-  },
-  inspirationImage: {
-    borderColor: colors.PURPLE,
-  },
-  helpImage: {
-    borderColor: colors.GREEN,
-  },
-  pickImage: {
-    borderColor: colors.ORANGE,
-  },
-  readImage: {
-    borderColor: colors.BLUE_GREEN,
   },
   choices: {
     marginTop: 80,
