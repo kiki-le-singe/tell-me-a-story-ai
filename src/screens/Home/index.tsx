@@ -16,24 +16,24 @@ import Choices from '../../components/Choices';
 
 const DATAHeroes = [
   {
-    label: 'Vampire',
-    image: require('../../assets/images/vampire.jpg'),
-  },
-  {
     label: 'Giraffe',
     image: require('../../assets/images/giraffe.jpg'),
+  },
+  {
+    label: 'Vampire',
+    image: require('../../assets/images/vampire.jpg'),
   },
   {
     label: 'Dog',
     image: require('../../assets/images/dog.jpg'),
   },
   {
-    label: 'Alien',
-    image: require('../../assets/images/alien.jpg'),
-  },
-  {
     label: 'Cat',
     image: require('../../assets/images/cat.jpg'),
+  },
+  {
+    label: 'Alien',
+    image: require('../../assets/images/alien.jpg'),
   },
   {
     label: 'Dragon',
@@ -51,12 +51,20 @@ const DATAVillains = [
     image: require('../../assets/images/zombies.jpg'),
   },
   {
-    label: 'Wolf',
-    image: require('../../assets/images/wolf.jpg'),
+    label: 'Shark',
+    image: require('../../assets/images/shark.jpg'),
+  },
+  {
+    label: 'Octopus',
+    image: require('../../assets/images/octopus.jpg'),
   },
   {
     label: 'Alien',
     image: require('../../assets/images/alien.jpg'),
+  },
+  {
+    label: 'Wolf',
+    image: require('../../assets/images/wolf.jpg'),
   },
   {
     label: 'Vampire',
@@ -80,6 +88,10 @@ const DATAPlaces = [
   {
     label: 'Forest',
     image: require('../../assets/images/forest.jpg'),
+  },
+  {
+    label: 'Snowy Mountain',
+    image: require('../../assets/images/snowy-mountain.jpg'),
   },
   {
     label: 'Galaxy',
