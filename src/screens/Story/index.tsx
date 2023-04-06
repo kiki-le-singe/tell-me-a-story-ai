@@ -1,16 +1,20 @@
 import * as React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import {useRecoilValue} from 'recoil';
 
 import {StoryScreenProps} from '../../routes/types';
+import {storyState} from '../../atoms/Story';
 
 function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
+  const story = useRecoilValue(storyState);
+
   return (
     <View style={styles.container}>
-      <Text>Story Screen</Text>
-      <Button
-        title="Go back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
+      <View>
+        <Text>{story.hero}</Text>
+        <Text>{story.villain}</Text>
+        <Text>{story.place}</Text>
+      </View>
     </View>
   );
 }
