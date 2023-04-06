@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {StyleSheet, ScrollView, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 // import Config from 'react-native-config';
 // import {Configuration, OpenAIApi} from 'openai';
 
@@ -140,7 +146,11 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
   //   // fetchData();
   // }, []);
 
-  function handlePress() {
+  function handleReadStoryPress() {
+    navigation.navigate('Story');
+  }
+
+  function handleWriteStoryPress() {
     navigation.navigate('WriteStory');
   }
 
@@ -173,9 +183,19 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
       <Choices data={DATAVillains} text="Choose a villain" />
       <Choices data={DATAPlaces} text="Choose a place" />
 
-      <TouchableOpacity onPress={handlePress} style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Write your own story</Text>
-      </TouchableOpacity>
+      <View style={styles.actions}>
+        <TouchableOpacity
+          onPress={handleReadStoryPress}
+          style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>Read the story</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={handleWriteStoryPress}
+          style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>Write your own story</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }
@@ -194,13 +214,17 @@ const styles = StyleSheet.create({
   choices: {
     marginTop: 50,
   },
-  buttonContainer: {
+  actions: {
     marginTop: 50,
+    gap: 20,
+  },
+  buttonContainer: {
     backgroundColor: colors.ORANGE,
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
   buttonText: {
+    textAlign: 'center',
     color: colors.WHITE,
     fontSize: 20,
   },
