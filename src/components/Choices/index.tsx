@@ -6,6 +6,29 @@ import colors from '../../utils/colors';
 import ChoiceItem from './components/ChoiceItem';
 
 function Choices({id, data, text, containerStyles}: ChoicesProps): JSX.Element {
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
+
+  function _setSelectedIndex(index: number) {
+    setSelectedIndex(index);
+  }
+
+  function renderChoices(): JSX.Element[] {
+    return data.map((element, index) => {
+      const isSelected = selectedIndex === index;
+
+      return (
+        <ChoiceItem
+          key={`choice_${index}`}
+          isSelected={isSelected}
+          setSelectedIndex={_setSelectedIndex}
+          index={index}
+          id={id}
+          data={element}
+        />
+      );
+    });
+  }
+
   return (
     <View style={[styles.container, containerStyles]}>
       <Text style={styles.text}>{text}</Text>
@@ -13,9 +36,7 @@ function Choices({id, data, text, containerStyles}: ChoicesProps): JSX.Element {
         contentContainerStyle={styles.contentContainerStyle}
         horizontal
         showsHorizontalScrollIndicator={false}>
-        {data.map((element, index) => (
-          <ChoiceItem key={`choice_${index}`} id={id} data={element} />
-        ))}
+        {renderChoices()}
       </ScrollView>
     </View>
   );
