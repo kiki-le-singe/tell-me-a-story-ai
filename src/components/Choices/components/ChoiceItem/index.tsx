@@ -1,18 +1,19 @@
 import * as React from 'react';
 import {Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {useSetRecoilState} from 'recoil';
+import {useRecoilState} from 'recoil';
 
 import {ChoiceItemProps} from './types';
 import colors from '../../../../utils/colors';
 import {storyState} from '../../../../atoms/Story';
 
 function ChoiceItem({id, data}: ChoiceItemProps): JSX.Element {
-  const setStory = useSetRecoilState(storyState);
+  const [story, setStory] = useRecoilState(storyState);
   const {label} = data;
 
   function onPress() {
     console.log(id);
     setStory({
+      ...story,
       [id]: label,
     });
   }
