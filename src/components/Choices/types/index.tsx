@@ -6,6 +6,7 @@ export type TChoice = {
 };
 
 export type ChoicesProps = {
+  id: string;
   data: TChoice[];
   text: string;
   containerStyles?: object;

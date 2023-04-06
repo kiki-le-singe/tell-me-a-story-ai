@@ -1,17 +1,11 @@
 import * as React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, StyleSheet, ScrollView} from 'react-native';
 
 import {ChoicesProps} from './types';
 import colors from '../../utils/colors';
+import ChoiceItem from './components/ChoiceItem';
 
-function Choices({data, text, containerStyles}: ChoicesProps): JSX.Element {
+function Choices({id, data, text, containerStyles}: ChoicesProps): JSX.Element {
   return (
     <View style={[styles.container, containerStyles]}>
       <Text style={styles.text}>{text}</Text>
@@ -20,10 +14,7 @@ function Choices({data, text, containerStyles}: ChoicesProps): JSX.Element {
         horizontal
         showsHorizontalScrollIndicator={false}>
         {data.map((element, index) => (
-          <TouchableOpacity key={`choice_${index}`} style={styles.content}>
-            <Image style={styles.image} source={element.image} />
-            <Text style={styles.label}>{element.label}</Text>
-          </TouchableOpacity>
+          <ChoiceItem key={`choice_${index}`} id={id} data={element} />
         ))}
       </ScrollView>
     </View>
@@ -46,24 +37,6 @@ const styles = StyleSheet.create({
   contentContainerStyle: {
     gap: 10,
     paddingHorizontal: 20,
-  },
-  content: {
-    alignItems: 'center',
-    gap: 10,
-  },
-  imagesContainer: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  image: {
-    width: 80,
-    height: 80,
-    borderRadius: 80,
-    borderWidth: 0.2,
-    borderColor: colors.BLUE_DARK,
-  },
-  label: {
-    color: colors.BLUE_DARK,
   },
 });
 

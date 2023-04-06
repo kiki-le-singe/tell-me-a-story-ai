@@ -176,12 +176,13 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
       />
 
       <Choices
+        id="hero"
         data={DATAHeroes}
         text="Choose a hero"
         containerStyles={styles.choices}
       />
-      <Choices data={DATAVillains} text="Choose a villain" />
-      <Choices data={DATAPlaces} text="Choose a place" />
+      <Choices id="villain" data={DATAVillains} text="Choose a villain" />
+      <Choices id="place" data={DATAPlaces} text="Choose a place" />
 
       <View style={styles.actions}>
         <TouchableOpacity

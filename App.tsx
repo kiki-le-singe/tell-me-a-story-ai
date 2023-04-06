@@ -7,14 +7,17 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {RecoilRoot} from 'recoil';
 
 import Routes from './src/routes';
 
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
-      <Routes />
-    </NavigationContainer>
+    <RecoilRoot>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </RecoilRoot>
   );
 }
 
