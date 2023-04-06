@@ -4,6 +4,7 @@ export type RootStackParamList = {
   Intro: object | undefined;
   Home: object | undefined;
   WriteStory: object | undefined;
+  Story: object | undefined;
   Details: object | undefined;
 };
 
@@ -20,6 +21,11 @@ export type HomeScreenProps = NativeStackScreenProps<
 export type WriteStoryScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'WriteStory'
+>;
+
+export type StoryScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'Story'
 >;
 
 export type DetailsScreenProps = NativeStackScreenProps<
