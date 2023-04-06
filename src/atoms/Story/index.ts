@@ -10,7 +10,7 @@ const defaultValue: TStory = {
 
 const storyState = atom({
   key: 'storyState',
-  default: defaultValue, // default value (aka initial value)
+  default: defaultValue,
 });
 
 export {storyState};
