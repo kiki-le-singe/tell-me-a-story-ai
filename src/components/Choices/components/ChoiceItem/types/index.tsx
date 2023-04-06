@@ -1,6 +1,7 @@
+import {TStoryKey} from '../../../../../atoms/Story/types';
 import {TChoice} from '../../../types';
 
 export type ChoiceItemProps = {
-  id: string; // hero, villain, place
+  id: TStoryKey; // hero, villain, place
   data: TChoice;
 };

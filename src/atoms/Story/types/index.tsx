@@ -1,5 +1,5 @@
+export type TStoryKey = 'hero' | 'villain' | 'place';
+
 export type TStory = {
-  hero?: string;
-  villain?: string;
-  place?: string;
+  [key in TStoryKey]?: string;
 };
