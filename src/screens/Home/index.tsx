@@ -21,30 +21,37 @@ import Choices from '../../components/Choices';
 const DATAHeroes = [
   {
     label: 'Giraffe',
+    sentence: 'a Giraffe',
     image: require('../../assets/images/giraffe.jpg'),
   },
   {
     label: 'Vampire',
+    sentence: 'a Vampire',
     image: require('../../assets/images/vampire.jpg'),
   },
   {
     label: 'Dog',
+    sentence: 'a Dog',
     image: require('../../assets/images/dog.jpg'),
   },
   {
     label: 'Cat',
+    sentence: 'a Cat',
     image: require('../../assets/images/cat.jpg'),
   },
   {
     label: 'Alien',
+    sentence: 'an Alien',
     image: require('../../assets/images/alien.jpg'),
   },
   {
     label: 'Dragon',
+    sentence: 'a Dragon',
     image: require('../../assets/images/dragon.jpg'),
   },
   {
     label: 'Pig',
+    sentence: 'a Pig',
     image: require('../../assets/images/pig.jpg'),
   },
 ];
@@ -52,30 +59,37 @@ const DATAHeroes = [
 const DATAVillains = [
   {
     label: 'Zombies',
+    sentence: 'Zombies',
     image: require('../../assets/images/zombies.jpg'),
   },
   {
     label: 'Shark',
+    sentence: 'a Shark',
     image: require('../../assets/images/shark.jpg'),
   },
   {
     label: 'Octopus',
+    sentence: 'an Octopus',
     image: require('../../assets/images/octopus.jpg'),
   },
   {
     label: 'Alien',
+    sentence: 'an Alien',
     image: require('../../assets/images/alien.jpg'),
   },
   {
     label: 'Wolf',
+    sentence: 'a Wolf',
     image: require('../../assets/images/wolf.jpg'),
   },
   {
     label: 'Vampire',
+    sentence: 'a Vampire',
     image: require('../../assets/images/vampire.jpg'),
   },
   {
     label: 'Dragon',
+    sentence: 'a Dragon',
     image: require('../../assets/images/dragon.jpg'),
   },
 ];
@@ -83,30 +97,37 @@ const DATAVillains = [
 const DATAPlaces = [
   {
     label: 'Beach',
+    sentence: 'at the Beach',
     image: require('../../assets/images/beach.jpg'),
   },
   {
-    label: 'Mountain',
+    label: 'Mountains',
+    sentence: 'in the Mountains',
     image: require('../../assets/images/mountain.jpg'),
   },
   {
     label: 'Forest',
+    sentence: 'in the Forest',
     image: require('../../assets/images/forest.jpg'),
   },
   {
     label: 'Snowy Mountain',
+    sentence: 'in the Snowy Mountains',
     image: require('../../assets/images/snowy-mountain.jpg'),
   },
   {
     label: 'Galaxy',
+    sentence: 'in the Galaxy',
     image: require('../../assets/images/galaxy.jpg'),
   },
   {
     label: 'Desert',
+    sentence: 'in the Desert',
     image: require('../../assets/images/desert.jpg'),
   },
   {
-    label: 'Planet',
+    label: 'Unknown Planet',
+    sentence: 'on the Unknown Planet',
     image: require('../../assets/images/planet.jpg'),
   },
 ];

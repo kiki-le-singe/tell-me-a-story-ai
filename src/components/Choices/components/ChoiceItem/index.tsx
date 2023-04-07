@@ -14,7 +14,6 @@ function ChoiceItem({
   data,
 }: ChoiceItemProps): JSX.Element {
   const [story, setStory] = useRecoilState(storyState);
-  const {label} = data;
 
   function onPress() {
     console.log('id category', id);
@@ -22,7 +21,7 @@ function ChoiceItem({
 
     setStory({
       ...story,
-      [id]: label,
+      [id]: data.sentence,
     });
     setSelectedIndex(index);
   }
@@ -34,7 +33,7 @@ function ChoiceItem({
         source={data.image}
       />
       <Text style={[styles.label, isSelected && styles.selectedLabel]}>
-        {label}
+        {data.label}
       </Text>
     </TouchableOpacity>
   );

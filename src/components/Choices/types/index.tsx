@@ -4,6 +4,7 @@ import {TStoryKey} from '../../../atoms/Story/types';
 
 export type TChoice = {
   label: string;
+  sentence: string;
   image: ImageSourcePropType;
 };
 

@@ -3,9 +3,9 @@ import {atom} from 'recoil';
 import {TStory} from './types';
 
 const defaultValue: TStory = {
-  hero: 'Giraffe',
+  hero: 'a Giraffe',
   villain: 'Zombies',
-  place: 'Beach',
+  place: 'at the Beach',
 };
 
 const storyState = atom({

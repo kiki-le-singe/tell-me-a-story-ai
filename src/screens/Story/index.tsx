@@ -8,6 +8,7 @@ import {StoryScreenProps} from '../../routes/types';
 import {storyState} from '../../atoms/Story';
 
 function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
+  const story = useRecoilValue(storyState);
   // React.useEffect(() => {
   //   const fetchData = async () => {
   //     const configuration = new Configuration({
@@ -39,11 +40,14 @@ function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
 
   //   // fetchData();
   // }, []);
-  const story = useRecoilValue(storyState);
 
   return (
     <View style={styles.container}>
       <View>
+        <Text>
+          Tell me a story with {story.hero} as Hero and {story.villain} as
+          villains. This story should take place {story.place}.
+        </Text>
         <Text>{story.hero}</Text>
         <Text>{story.villain}</Text>
         <Text>{story.place}</Text>
