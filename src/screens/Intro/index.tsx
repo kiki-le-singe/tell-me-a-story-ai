@@ -59,7 +59,6 @@ function IntroScreen({navigation}: IntroScreenProps): JSX.Element {
     viewableItems,
   }: OnViewableItemsChangedProps) => {
     const index = viewableItems[0].index ?? 0;
-    console.log('index', index);
     setSelectedIndex(index);
   };
   const viewabilityConfigCallbackPairs = React.useRef([
