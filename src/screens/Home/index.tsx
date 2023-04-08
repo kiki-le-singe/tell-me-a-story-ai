@@ -181,7 +181,9 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
         <TouchableOpacity
           onPress={handleWriteStoryPress}
           style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Write your own story</Text>
+          <Text style={styles.buttonText}>
+            (Coming soon...) Write your own story
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
