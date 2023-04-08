@@ -70,8 +70,6 @@ function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
         const completion = await openai.createChatCompletion({
           model: 'gpt-3.5-turbo',
           messages: [{role: 'user', content}],
-          temperature: 2,
-          user: Config.OPENAI_USER_IDENTIFIER,
         });
 
         console.log('completion', completion);
