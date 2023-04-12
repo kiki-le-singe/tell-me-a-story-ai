@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: colors.ORANGE,
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    maxWidth: 200,
   },
   buttonText: {
     textAlign: 'center',
