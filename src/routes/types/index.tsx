@@ -1,10 +1,14 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+type TStoryParams = {
+  story?: string;
+};
+
 export type RootStackParamList = {
   Intro: object | undefined;
   Home: object | undefined;
   WriteStory: object | undefined;
-  Story: object | undefined;
+  Story: TStoryParams | undefined;
   Details: object | undefined;
 };
 

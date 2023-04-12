@@ -8,78 +8,21 @@ import {
   View,
 } from 'react-native';
 import {useRecoilValue} from 'recoil';
-import Config from 'react-native-config';
-import {Configuration, OpenAIApi} from 'openai';
 import FastImage from 'react-native-fast-image';
 
 import {StoryScreenProps} from '../../routes/types';
 import {storyState} from '../../atoms/Story';
 import colors from '../../utils/colors';
 import imageWaiting from '../../assets/images/waiting.jpg';
-import {ImagesState, defaultState} from './types';
-
-const configuration = new Configuration({
-  apiKey: Config.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+import useStory from '../../hooks/useStory';
 
 function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
   const story = useRecoilValue(storyState);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [message, setMessage] = React.useState<string | undefined>('');
-  const [images, setImages] = React.useState<ImagesState[]>([defaultState]);
 
-  const fetchImagesStory = React.useCallback(async (prompt: string = '') => {
-    try {
-      const response = await openai.createImage({
-        prompt,
-        n: 5,
-        size: '256x256',
-      });
+  const content = `Tell me a story with ${story.hero} as a Hero and ${story.villain} as villain. This story should take place ${story.place}`;
+  const prompt = `${story.hero} as a Hero and ${story.villain} as villain, ${story.place}`;
 
-      setImages(response.data.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('error:', error);
-        console.log('error.message:', error.message);
-      }
-    }
-  }, []);
-
-  const fetchStory = React.useCallback(async () => {
-    const content = `Tell me a story with ${story.hero} as a Hero and ${story.villain} as villain. This story should take place ${story.place}`;
-
-    try {
-      const completion = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
-        messages: [{role: 'user', content}],
-      });
-
-      const _message = completion.data.choices[0].message;
-
-      setMessage(_message?.content);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('error:', error);
-        console.log('error.message:', error.message);
-      }
-    }
-  }, [story]);
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      await fetchStory();
-      await fetchImagesStory(
-        `${story.hero} as a Hero and ${story.villain} as villain, ${story.place}`,
-      );
-      setIsLoading(false);
-    };
-
-    if (story) {
-      fetchData();
-    }
-  }, [story, fetchStory, fetchImagesStory]);
+  const {images, isLoading, message} = useStory({content, prompt});
 
   function renderImages(): JSX.Element {
     const _images = images.map((element, index) => (
