@@ -4,7 +4,6 @@ import {RootStackParamList} from './types';
 
 import HomeScreen from '../screens/Home';
 import WriteStoryScreen from '../screens/WriteStory';
-import DetailsScreen from '../screens/Details';
 import IntroScreen from '../screens/Intro';
 import StoryScreen from '../screens/Story';
 import colors from '../utils/colors';
@@ -44,7 +43,6 @@ function Routes(): JSX.Element {
           }}
           component={WriteStoryScreen}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Group>
 
       <Stack.Group screenOptions={{presentation: 'modal', headerShown: false}}>
