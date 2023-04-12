@@ -16,11 +16,15 @@ import colors from '../../utils/colors';
 import imageWaiting from '../../assets/images/waiting.jpg';
 import useStory from '../../hooks/useStory';
 
-function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
-  const story = useRecoilValue(storyState);
+function StoryScreen({navigation, route}: StoryScreenProps): JSX.Element {
+  const {story} = route.params;
+  const {villain, hero, place} = useRecoilValue(storyState);
 
-  const content = `Tell me a story with ${story.hero} as a Hero and ${story.villain} as villain. This story should take place ${story.place}`;
-  const prompt = `${story.hero} as a Hero and ${story.villain} as villain, ${story.place}`;
+  const content =
+    story ??
+    `Tell me a story with ${hero} as a Hero and ${villain} as villain. This story should take place ${place}`;
+  const prompt =
+    story ?? `${hero} as a Hero and ${villain} as villain, ${place}`;
 
   const {images, isLoading, message} = useStory({content, prompt});
 
@@ -43,12 +47,16 @@ function StoryScreen({navigation}: StoryScreenProps): JSX.Element {
       showsVerticalScrollIndicator={false}
       style={styles.container}
       contentContainerStyle={styles.contentContainerStyle}>
-      <Text style={styles.synopsis}>
-        Tell me a story with <Text style={styles.chosenItem}>{story.hero}</Text>{' '}
-        as a Hero and <Text style={styles.chosenItem}>{story.villain}</Text> as
-        villain. This story should take place{' '}
-        <Text style={styles.chosenItem}>{story.place}</Text>.
-      </Text>
+      {story ? (
+        <Text style={styles.synopsis}>{story}</Text>
+      ) : (
+        <Text style={styles.synopsis}>
+          Tell me a story with <Text style={styles.chosenItem}>{hero}</Text> as
+          a Hero and <Text style={styles.chosenItem}>{villain}</Text> as
+          villain. This story should take place{' '}
+          <Text style={styles.chosenItem}>{place}</Text>.
+        </Text>
+      )}
 
       {isLoading ? (
         <ImageBackground

@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type TStoryParams = {
-  story?: string;
+  story?: string | undefined;
 };
 
 export type RootStackParamList = {

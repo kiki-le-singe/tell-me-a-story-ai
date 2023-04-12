@@ -181,9 +181,7 @@ function HomeScreen({navigation}: HomeScreenProps): JSX.Element {
         <TouchableOpacity
           onPress={handleWriteStoryPress}
           style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>
-            (Coming soon...) Write your own story
-          </Text>
+          <Text style={styles.buttonText}>Write your own story</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -211,7 +209,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: colors.ORANGE,
     paddingVertical: 10,
-    maxWidth: 200,
+    paddingHorizontal: 20,
   },
   buttonText: {
     textAlign: 'center',

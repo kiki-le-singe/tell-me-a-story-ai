@@ -48,7 +48,11 @@ function Routes(): JSX.Element {
       </Stack.Group>
 
       <Stack.Group screenOptions={{presentation: 'modal', headerShown: false}}>
-        <Stack.Screen name="Story" component={StoryScreen} />
+        <Stack.Screen
+          name="Story"
+          component={StoryScreen}
+          initialParams={{story: undefined}}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
