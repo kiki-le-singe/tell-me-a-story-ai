@@ -1,14 +1,17 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RootStackParamList} from './types';
 
+import {RootStackParamList} from './types';
 import HomeScreen from '../screens/Home';
 import WriteStoryScreen from '../screens/WriteStory';
 import IntroScreen from '../screens/Intro';
 import StoryScreen from '../screens/Story';
+import SettingsScreen from '../screens/Settings';
 import colors from '../utils/colors';
+import {HeaderRight} from '../components/HeaderRight';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const headerRight = () => <HeaderRight />;
 
 function Routes(): JSX.Element {
   return (
@@ -20,6 +23,7 @@ function Routes(): JSX.Element {
           headerStyle: {
             backgroundColor: colors.BLUE_DARK,
           },
+          headerRight,
         }}>
         <Stack.Screen
           name="Intro"
@@ -51,6 +55,7 @@ function Routes(): JSX.Element {
           component={StoryScreen}
           initialParams={{story: undefined}}
         />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
