@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   View,
+  Alert,
 } from 'react-native';
 
 import {WriteStoryScreenProps} from '../../routes/types';
@@ -19,7 +20,11 @@ import {Position} from '../../components/Explanation/types';
 function WriteStoryScreen({navigation}: WriteStoryScreenProps): JSX.Element {
   const [story, onChangeStory] = React.useState('');
   function handlePress() {
-    navigation.navigate('Story', {story});
+    if (story) {
+      navigation.navigate('Story', {story});
+    } else {
+      Alert.alert('Please write a story...');
+    }
   }
 
   return (
