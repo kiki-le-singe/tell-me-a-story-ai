@@ -7,7 +7,18 @@ import {
   TextInput,
   View,
   Alert,
+  Button,
 } from 'react-native';
+import DocumentPicker, {
+  DirectoryPickerResponse,
+  DocumentPickerResponse,
+  isInProgress,
+  types,
+} from 'react-native-document-picker';
+import {Configuration, OpenAIApi} from 'openai';
+import Config from 'react-native-config';
+import RNFS from 'react-native-fs';
+import * as EXPODocumentPicker from 'expo-document-picker';
 
 import {WriteStoryScreenProps} from '../../routes/types';
 import colors from '../../utils/colors';
@@ -17,8 +28,51 @@ import readImage from '../../assets/images/relax-and-read.jpg';
 import Explanation from '../../components/Explanation';
 import {Position} from '../../components/Explanation/types';
 
+class CustomFormData extends FormData {
+  // https://github.com/openai/openai-node/issues/75
+  getHeaders() {
+    return {};
+  }
+}
+const configuration = new Configuration({
+  apiKey: Config.OPENAI_API_KEY,
+  formDataCtor: CustomFormData, // Allow to fix error: localVarFormParams.getHeaders is not a function
+});
+const openai = new OpenAIApi(configuration);
+
 function WriteStoryScreen({navigation}: WriteStoryScreenProps): JSX.Element {
   const [story, onChangeStory] = React.useState('');
+  const [result, setResult] = React.useState<
+    Array<DocumentPickerResponse> | DirectoryPickerResponse | undefined | null
+  >();
+
+  const createTranscription = React.useCallback(async (uri: string) => {
+    try {
+      // const _file = readFile(uri);
+
+      const file = await RNFS.readFile(uri, 'utf8');
+      // const file = await RNFetchBlob.fs.readFile(uri, 'utf8');
+      debugger;
+
+      const response = await openai.createTranscription(
+        file,
+        // _file,
+        // fs.createReadStream(file),
+        'whisper-1',
+      );
+
+      debugger;
+      // setImages(response.data.data);
+    } catch (error) {
+      debugger;
+      if (error instanceof Error) {
+        debugger;
+        console.log('error:', error);
+        console.log('error.message:', error.message);
+      }
+    }
+  }, []);
+
   function handlePress() {
     if (story) {
       navigation.navigate('Story', {story});
@@ -26,6 +80,44 @@ function WriteStoryScreen({navigation}: WriteStoryScreenProps): JSX.Element {
       Alert.alert('Please write a story...');
     }
   }
+
+  function handleError(err: unknown) {
+    if (DocumentPicker.isCancel(err)) {
+      console.log('cancelled');
+      debugger;
+      // User cancelled the picker, exit any dialogs or menus and move on
+    } else if (isInProgress(err)) {
+      debugger;
+      console.log(
+        'multiple pickers were opened, only the last will be considered',
+      );
+    } else {
+      debugger;
+      console.log('err', err);
+    }
+  }
+
+  async function pickAudio() {
+    let result = await EXPODocumentPicker.getDocumentAsync();
+    // let result = await EXPODocumentPicker.getDocumentAsync({ type: 'application/pdf' });
+
+    if (result.type === 'success') {
+      // Do something with the picked document
+      console.log(result.uri);
+    }
+  }
+
+  React.useEffect(() => {
+    if (result) {
+      // const _result = JSON.stringify(result, null, 2)
+      const {uri} = Array.isArray(result) ? result[0] : result;
+
+      createTranscription(uri);
+
+      debugger;
+    }
+    console.log(JSON.stringify(result, null, 2));
+  }, [result, createTranscription]);
 
   return (
     <ScrollView
@@ -56,6 +148,43 @@ function WriteStoryScreen({navigation}: WriteStoryScreenProps): JSX.Element {
           Example: Tell me a story about a frog who dreams to become a human.
         </Text>
       </View>
+
+      {/* <Button
+        title="open picker for single file selection"
+        onPress={async () => {
+          try {
+            const pickerResult = await DocumentPicker.pickSingle({
+              presentationStyle: 'fullScreen',
+              copyTo: 'cachesDirectory',
+              type: types.audio,
+            });
+            setResult([pickerResult]);
+          } catch (e) {
+            handleError(e);
+          }
+        }}
+      /> */}
+
+      <Button
+        title="open picker for single selection of audio files"
+        onPress={() => {
+          DocumentPicker
+            // .pick()
+            .pick({
+              type: types.audio,
+            })
+            .then(setResult)
+            .catch(handleError);
+        }}
+      />
+
+      <Button title="Select Audio" onPress={pickAudio} />
+
+      <Text>{JSON.stringify(result)}</Text>
+      <Text>_____________</Text>
+      <Text>_____________</Text>
+      <Text>_____________</Text>
+      <Text>{JSON.stringify(result, null, 2)}</Text>
 
       <TouchableOpacity onPress={handlePress} style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Read your story</Text>
