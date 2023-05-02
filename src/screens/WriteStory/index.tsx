@@ -18,7 +18,6 @@ import DocumentPicker, {
 import {Configuration, OpenAIApi} from 'openai';
 import Config from 'react-native-config';
 import RNFS from 'react-native-fs';
-import * as EXPODocumentPicker from 'expo-document-picker';
 
 import {WriteStoryScreenProps} from '../../routes/types';
 import colors from '../../utils/colors';
