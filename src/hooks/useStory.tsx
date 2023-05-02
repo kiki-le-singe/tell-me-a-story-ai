@@ -21,7 +21,7 @@ export default function useStory({
   const fetchImagesStory = React.useCallback(async () => {
     try {
       const response = await openai.createImage({
-        prompt,
+        prompt: `${prompt}, digital art`,
         n: 5,
         size: '256x256',
       });
