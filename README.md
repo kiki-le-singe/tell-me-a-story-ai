@@ -8,6 +8,7 @@ This app uses these following API:
 
 - [Create image](https://platform.openai.com/docs/api-reference/images/create)
 - [Create completion](https://platform.openai.com/docs/api-reference/completions/create)
+- [Create transcription](https://platform.openai.com/docs/api-reference/audio/create)
 
 Enjoy it! :)
 
@@ -29,6 +30,13 @@ This app has four screens:
 <br />
 
 <img src="./docs/story.gif" alt="Story" />
+
+<br />
+<br />
+
+> You can use an audio file, from your device, to write a story. Before you have to record an audio (Tell me a story about an alien who loves to swim and eat chocolate very much.), and then the app will transcribe it. After that, you can use the transcription to write a story.
+
+<img src="./docs/transcription.gif" alt="Transcription" />
 
 <br />
 
